@@ -2,6 +2,9 @@
 
 The goal of Aggregate Store is to be a simple yet effective PHP ORM for [domain-driven design][1] aggregates.
 
+It has been inspired by my experiences trying to use Doctrine for persisting DDD aggregates, and a recent discussion
+with [Ross Tuck] and [Jeroen van der Gulik] at a [DomCode] meetup.
+
 This is an experiment. Use this software at your own risk.
 
 ## Goals
@@ -30,3 +33,6 @@ Because of this, the following assumptions are made:
 
 [1]: https://en.wikipedia.org/wiki/Domain-driven_design
 [2]: https://blog.codinghorror.com/object-relational-mapping-is-the-vietnam-of-computer-science/
+[Ross Tuck]: https://twitter.com/rosstuck
+[Jeroen van der Gulik]: https://twitter.com/jeroenvdgulik
+[DomCode]: http://domcode.org/
