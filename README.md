@@ -22,7 +22,7 @@ tactical domain-driven design patterns. The use of CQRS (separation between writ
 
 Because of this, the following assumptions are made:
  - **Repositories** are being used to persist and retrieve (by ID) **aggregates**
- - **Aggregates** are composed of one or more **entities**, and may also contain **value objects**
+ - **Aggregates** are a cluster of domain objects that can be treated as a single unit. They are usually composed of one or more **entities**, and may also contain **value objects**
  - All aggregates have one **root entity** (aggregate root) which *owns* all other elements inside the aggregate, and
    which will be persisted / retrieved by the repository
  - Aggregates only reference other aggregates by identity; not by having an object reference
