@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace NicWortel\AggregateStore;
 
+/**
+ * Interface for a collection-oriented aggregate repository
+ */
 interface AggregateRepository
 {
     /**
@@ -16,6 +19,7 @@ interface AggregateRepository
      * @param mixed $id
      *
      * @return object
+     * @throws AggregateNotFoundException
      */
     public function get($id);
 
