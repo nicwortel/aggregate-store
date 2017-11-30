@@ -8,25 +8,12 @@ namespace NicWortel\AggregateStore;
  */
 interface AggregateRepository
 {
-    /**
-     * @param object $aggregate
-     *
-     * @return void
-     */
-    public function add($aggregate): void;
+    public function add(object $aggregate): void;
 
     /**
-     * @param mixed $id
-     *
-     * @return object
      * @throws AggregateNotFoundException
      */
-    public function get($id);
+    public function get($id): object;
 
-    /**
-     * @param object $aggregate
-     *
-     * @return void
-     */
-    public function remove($aggregate): void;
+    public function remove(object $aggregate): void;
 }
