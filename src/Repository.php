@@ -6,7 +6,7 @@ namespace NicWortel\AggregateStore;
 /**
  * Interface for a collection-oriented aggregate repository
  */
-interface AggregateRepository
+interface Repository
 {
     public function add(object $aggregate): void;
 
