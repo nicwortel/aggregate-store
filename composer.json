@@ -6,7 +6,8 @@
     },
     "require-dev": {
         "nicwortel/coding-standard": "^1.1",
-        "phpstan/phpstan": "^0.12.8"
+        "phpstan/phpstan": "^0.12.8",
+        "phpunit/phpunit": "^8.5"
     },
     "config": {
         "sort-packages": true
