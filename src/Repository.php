@@ -13,8 +13,6 @@ interface Repository
     /**
      * @param mixed $id
      *
-     * @return object
-     *
      * @throws AggregateNotFoundException
      */
     public function get($id): object;

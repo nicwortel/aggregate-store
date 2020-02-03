@@ -9,4 +9,10 @@
     <rule ref="PSR2"/>
 
     <rule ref="vendor/nicwortel/coding-standard/ruleset.xml"/>
+
+    <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint">
+        <properties>
+            <property name="enableNativeTypeHint" value="false"/>
+        </properties>
+    </rule>
 </ruleset>

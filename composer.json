@@ -2,7 +2,8 @@
     "name": "nicwortel/aggregate-store",
     "description": "An experiment to create a PHP ORM specifically for DDD aggregates",
     "require": {
-        "php": "^7.2"
+        "php": "^7.2",
+        "doctrine/dbal": "^2.10"
     },
     "require-dev": {
         "nicwortel/coding-standard": "^1.1",
@@ -15,6 +16,11 @@
     "autoload": {
         "psr-4": {
             "NicWortel\\AggregateStore\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NicWortel\\AggregateStore\\Tests\\System\\": "tests/system"
         }
     }
 }
