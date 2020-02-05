@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 class AggregateRepositoryTest extends TestCase
 {
-    const TABLE_NAME = 'aggregates';
+    private const TABLE_NAME = 'aggregates';
 
     /**
      * @var Connection
@@ -38,6 +38,9 @@ class AggregateRepositoryTest extends TestCase
 
         $table = $schema->createTable(self::TABLE_NAME);
         $table->addColumn('id', 'integer');
+        $table->addColumn('isbn', 'string');
+        $table->addColumn('title', 'string');
+        $table->addColumn('author', 'string');
 
         $schemaManager = new SingleDatabaseSynchronizer($this->dbalConnection);
 
@@ -47,10 +50,21 @@ class AggregateRepositoryTest extends TestCase
 
     public function testLoadsAggregateFromTheDatabase(): void
     {
-        $this->dbalConnection->insert(self::TABLE_NAME, ['id' => 1]);
+        $this->dbalConnection->insert(
+            self::TABLE_NAME,
+            [
+                'id' => 1,
+                'isbn' => '9780321125217',
+                'title' => 'Domain-Driven Design',
+                'author' => 'Eric Evans',
+            ]
+        );
 
         $metadata = new EntityMetadata(Book::class, self::TABLE_NAME);
         $metadata->setIdentifier('id', 'id', 'integer');
+        $metadata->addField('isbn', 'isbn', 'string');
+        $metadata->addField('title', 'title', 'string');
+        $metadata->addField('author', 'author', 'string');
 
         $repository = new AggregateRepository(
             $metadata,
@@ -58,9 +72,13 @@ class AggregateRepositoryTest extends TestCase
             new Hydrator($this->dbalConnection->getDatabasePlatform())
         );
 
+        /** @var Book $aggregate */
         $aggregate = $repository->get(1);
 
         $this->assertInstanceOf(Book::class, $aggregate);
         $this->assertSame(1, $aggregate->getId());
+        $this->assertSame('9780321125217', $aggregate->getIsbn());
+        $this->assertSame('Domain-Driven Design', $aggregate->getTitle());
+        $this->assertSame('Eric Evans', $aggregate->getAuthor());
     }
 }

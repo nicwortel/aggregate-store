@@ -41,6 +41,11 @@ final class EntityMetadata
         $this->fields[] = new Field($propertyName, $columnName, $type);
     }
 
+    public function addField(string $propertyName, string $columnName, string $type): void
+    {
+        $this->fields[] = new Field($propertyName, $columnName, $type);
+    }
+
     /**
      * @return Field[]
      */
