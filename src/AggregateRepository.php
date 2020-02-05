@@ -43,8 +43,11 @@ final class AggregateRepository implements Repository
     public function get($id): object
     {
         $tableName = $this->metadata->getTableName();
+        $identifierColumn = $this->metadata->getIdentifierColumn();
 
-        $statement = $this->connection->prepare(sprintf('SELECT * FROM %s WHERE id = ?', $tableName));
+        $statement = $this->connection->prepare(
+            sprintf('SELECT * FROM %s WHERE %s = ?', $tableName, $identifierColumn)
+        );
         $statement->bindValue(1, $id);
         $statement->execute();
 

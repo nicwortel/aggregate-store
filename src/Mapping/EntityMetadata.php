@@ -20,6 +20,11 @@ final class EntityMetadata
      */
     private $fields = [];
 
+    /**
+     * @var string
+     */
+    private $identifierColumn;
+
     public function __construct(string $className, string $tableName)
     {
         $this->className = $className;
@@ -38,12 +43,18 @@ final class EntityMetadata
 
     public function setIdentifier(string $propertyName, string $columnName, string $type): void
     {
+        $this->identifierColumn = $columnName;
         $this->fields[] = new Field($propertyName, $columnName, $type);
     }
 
     public function addField(string $propertyName, string $columnName, string $type): void
     {
         $this->fields[] = new Field($propertyName, $columnName, $type);
+    }
+
+    public function getIdentifierColumn(): string
+    {
+        return $this->identifierColumn;
     }
 
     /**
